@@ -25,31 +25,33 @@
     <h1>Magic the Gathering:</h1>
     <h1>Card database</h1>
 
-    <div class="search_bar">
-      <form>
-        <select id="card_color_filter">
-          <option>Card Color</option>
-          <option>Black</option>
-          <option>Red</option>
-          <option>Green</option>
-          <option>Blue</option>
-          <option>White</option>
+    <form class="filter_bar">
+      <div id="card_colors_filter">
+        <span><b>Card Color:</b></span>
+        <input type="checkbox" id="black">Black
+        <input type="checkbox" id="red">Red
+        <input type="checkbox" id="green">Green
+        <input type="checkbox" id="blue">Blue
+        <input type="checkbox" id="white">White
         </select>
+      </div>
 
-        <select id="card_type_filter">
-          <option>Card Type</option>
-          <option id="creature">Creature</option>
-          <option id="sorcery">Sorcery</option>
-          <option id="instant">Instant</option>
-          <option id="enchantment">Enchantment</option>
-          <option id="artifact">Artifact</option>
-          <option id="planeswalker">Planeswalker</option>
-        </select>
+      <div id="card_type_name"></div>
+      <select id="card_type_filter">
+        <option>Card Type</option>
+        <option id="creature">Creature</option>
+        <option id="sorcery">Sorcery</option>
+        <option id="instant">Instant</option>
+        <option id="enchantment">Enchantment</option>
+        <option id="artifact">Artifact</option>
+        <option id="planeswalker">Planeswalker</option>
+      </select>
 
-        <input type="text" id="search_card" placeholder="Card name">
-        <input type="submit" value="Search">
-      </form>
-    </div>
+      <input type="text" id="search_card" placeholder="Card name">
+      <input type="submit" value="Search">
+      </div>
+    </form>
+
 
     <section class="cards">
       <div id="card_list"></div>

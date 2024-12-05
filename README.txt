@@ -1,3 +1,24 @@
+//=== HTML COMMANDS ===//
+SHIFT + =>/<= to select bits of code
+CMD + ALT + pil to select multiple lines
+
+Document colors:
+Black: #1B1B1B
+Red: #E63946
+Green: #3A9D23
+Blue: #0078BF
+White: #EDE6DB
+Background: linear-gradient(90deg, #1B1B1B, #E63946, #3A9D23, #0078BF, #EDE6DB)
+
+//=== CSS ===//
+Man kan nestla CSS ie inom en element {}, lägga till div {} eller p{}
+och då påverkas bara dessa element typer inom den första element
+EXEMPEL:
+a {
+  :hover {
+
+  }}
+
 //=== COLORS ==//
 
 Black cards:
