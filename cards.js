@@ -27,10 +27,47 @@ addEventListener("DOMContentLoaded", (cards) => {
   inputForm.addEventListener("submit", async (event) => {
     event.preventDefault()
 
+//TODO: Merge all filters to combine the results
+
+    //TODO: card type filter
     const cardTypeFilter = document.querySelector('select[id="card_type_filter"]').value
+    async function filterCardType(type) {
+      const result = (await axios.get('https://api.magicthegathering.io/v1/cards?type=' + type)).data
 
+      cards = result.cards
+
+      cards.forEach(card => {
+        if (card.imageUrl) {
+          const cardImage = document.createElement('img')
+          cardImage.src = card.imageUrl
+          cardImage.alt = card.name
+          cardImage.className = 'card_image'
+          cardList.appendChild(cardImage)
+        }
+      })
+    }
+    //filterCardType(cardTypeFilter)
+
+    //TODO: card name filter
     const cardNameFilter = document.querySelector('#search_card').value
+    async function filterCardName(name) {
+      const result = (await axios.get('https://api.magicthegathering.io/v1/cards?name=' + name)).data
 
+      cards = result.cards
+
+      cards.forEach(card => {
+        if (card.imageUrl) {
+          const cardImage = document.createElement('img')
+          cardImage.src = card.imageUrl
+          cardImage.alt = card.name
+          cardImage.className = 'card_image'
+          cardList.appendChild(cardImage)
+        }
+      })
+    }
+    //filterCardName(cardNameFilter)
+
+    //*! card color filter TO FIX!!!
     const cardColorFilter = document.querySelector('select[id="card_colors_filter"]')
 
     console.log(cardColorFilter)
@@ -61,45 +98,10 @@ addEventListener("DOMContentLoaded", (cards) => {
           cardImage.alt = card.name
           cardImage.className = 'card_image'
           cardList.appendChild(cardImage)
-        }
-      })
-    }
-
-    async function filterCardType(type) {
-      const result = (await axios.get('https://api.magicthegathering.io/v1/cards?type=' + type)).data
-
-      cards = result.cards
-
-      cards.forEach(card => {
-        if (card.imageUrl) {
-          const cardImage = document.createElement('img')
-          cardImage.src = card.imageUrl
-          cardImage.alt = card.name
-          cardImage.className = 'card_image'
-          cardList.appendChild(cardImage)
-        }
-      })
-    }
-
-    async function filterCardName(name) {
-      const result = (await axios.get('https://api.magicthegathering.io/v1/cards?name=' + name)).data
-
-      cards = result.cards
-
-      cards.forEach(card => {
-        if (card.imageUrl) {
-          const cardImage = document.createElement('img')
-          cardImage.src = card.imageUrl
-          cardImage.alt = card.name
-          cardImage.className = 'card_image'
-          cardList.appendChild(cardImage)
-        }
-      })
-    }
+          }
+        })
+      }
 
     filterCardColor(cardColorFilter)
-    //filterCardType(cardTypeFilter)
-    //filterCardName(cardNameFilter)
-
 })
 })
