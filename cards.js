@@ -23,13 +23,14 @@ async function loadAllCards(cards) {
 }
 
 //*! Merge all functions + add loadAllCards when empty filters (default?) + make it reset so you can filter again
+//*! Merge all functions + add loadAllCards when empty filters (default?) + make it reset so you can filter again
 addEventListener("DOMContentLoaded", (cards) => {
   const inputForm = document.querySelector("form")
 
   inputForm.addEventListener("submit", async (event) => {
     event.preventDefault()
 
-//TODO: Merge all filters to combine the results
+//*!Merge all filters to combine the results
 
     //TODO: card type filter
     //*!  going back to "Card type" doesn't reload all cards
