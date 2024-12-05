@@ -22,7 +22,7 @@ async function loadAllCards(cards) {
   })
 }
 
-//*! Merge all functions + add loadAllCards when empty filters (default?)
+//*! Merge all functions + add loadAllCards when empty filters (default?) + make it reset so you can filter again
 addEventListener("DOMContentLoaded", (cards) => {
   const inputForm = document.querySelector("form")
 
@@ -67,34 +67,15 @@ addEventListener("DOMContentLoaded", (cards) => {
         }
       })
     }
-    //filterCardName(cardNameFilter)
 
-    //*! card color filter TO FIX!!!
+    //*! cardcolor filter => make so that choosing more colors shows only mixed colored card
     let checkedColors = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
     //Ger en nodelista på alla checkade boxer som en array
 
     let cardColorFilter = [...checkedColors].map(e => e.value)
-
-    console.log(checkedColors)
-    console.log(cardColorFilter)
+    //* cardColorFilter ger oss rätt value
 
     async function filterCardColor(color) {
-
-      /*switch(input){
-        case "Black": color = "B"
-        break;
-        case "Red": color= "R"
-        break;
-        case "Green": color = "G"
-        break;
-        case "Blue": color= "U"
-        break;
-        case "White": color= "W"
-        break;
-        default: color = ""
-      }*/
-
-
 
       const result = (await axios.get('https://api.magicthegathering.io/v1/cards?colors=' + color)).data
 
