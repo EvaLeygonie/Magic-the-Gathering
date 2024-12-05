@@ -4,25 +4,28 @@ const cards = []
 const cardList = document.querySelector("#card_list")
 
 //TODO: Load all cards, when page opens
-addEventListener("load", loadAllCards)
-
-async function loadAllCards(cards) {
-  const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
-
-  cards = result.cards
-
-  cards.forEach(card => {
-    if (card.imageUrl) {
-      const cardImage = document.createElement('img')
-      cardImage.src = card.imageUrl
-      cardImage.alt = card.name
-      cardImage.className = 'card_image'
-      cardList.appendChild(cardImage)
-    }
-  })
-}
+//*! Reloads all cards before filtering every time!
+//addEventListener("load", loadAllCards)
 
 addEventListener("DOMContentLoaded", (cards) => {
+
+  async function loadAllCards(cards) {
+    const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
+
+    cards = result.cards
+
+    cards.forEach(card => {
+      if (card.imageUrl) {
+        const cardImage = document.createElement('img')
+        cardImage.src = card.imageUrl
+        cardImage.alt = card.name
+        cardImage.className = 'card_image'
+        cardList.appendChild(cardImage)
+      }
+    })
+  }
+loadAllCards(cards)
+
   const inputForm = document.querySelector("form")
 
   inputForm.addEventListener("submit", async (event) => {
