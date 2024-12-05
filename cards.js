@@ -3,7 +3,8 @@
 const cards = []
 const cardList = document.querySelector("#card_list")
 
-addEventListener("load", loadAllCards)
+//TODO: Load all cards, when page opens
+//addEventListener("load", loadAllCards)
 
 async function loadAllCards(cards) {
   const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
@@ -21,6 +22,7 @@ async function loadAllCards(cards) {
   })
 }
 
+//*! Merge all functions + add loadAllCards when empty filters (default?)
 addEventListener("DOMContentLoaded", (cards) => {
   const inputForm = document.querySelector("form")
 
@@ -68,12 +70,17 @@ addEventListener("DOMContentLoaded", (cards) => {
     //filterCardName(cardNameFilter)
 
     //*! card color filter TO FIX!!!
-    let cardColorFilter = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
+    let checkedColors = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
     //Ger en nodelista på alla checkade boxer som en array
+
+    let cardColorFilter = [...checkedColors].map(e => e.value)
+
+    console.log(checkedColors)
     console.log(cardColorFilter)
 
     async function filterCardColor(color) {
-      switch(color){
+
+      /*switch(input){
         case "Black": color = "B"
         break;
         case "Red": color= "R"
@@ -85,7 +92,9 @@ addEventListener("DOMContentLoaded", (cards) => {
         case "White": color= "W"
         break;
         default: color = ""
-      }
+      }*/
+
+
 
       const result = (await axios.get('https://api.magicthegathering.io/v1/cards?colors=' + color)).data
 

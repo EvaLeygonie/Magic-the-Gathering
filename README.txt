@@ -91,3 +91,18 @@ fetch('https://api.magicthegathering.io/v1/cards')
     }
   })
 })
+
+//=== OLD SWITCH COLOR CODE ===///
+      switch(input){
+        case "Black": color = "B"
+        break;
+        case "Red": color= "R"
+        break;
+        case "Green": color = "G"
+        break;
+        case "Blue": color= "U"
+        break;
+        case "White": color= "W"
+        break;
+        default: color = ""
+      }
