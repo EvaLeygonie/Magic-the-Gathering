@@ -22,21 +22,18 @@ async function loadAllCards(cards) {
   })
 }
 
-//*! Merge all functions + add loadAllCards when empty filters (default?) + make it reset so you can filter again
-//*! Merge all functions + add loadAllCards when empty filters (default?) + make it reset so you can filter again
 addEventListener("DOMContentLoaded", (cards) => {
   const inputForm = document.querySelector("form")
 
   inputForm.addEventListener("submit", async (event) => {
     event.preventDefault()
 
-//*!Merge all filters to combine the results
+//*! Merge all filters to combine the results
 
     //TODO: card type filter
-    //*!  going back to "Card type" doesn't reload all cards
     const cardTypeFilter = document.querySelector('select[id="card_type_filter"]').value
     async function filterCardType(type) {
-      const result = (await axios.get('https://api.magicthegathering.io/v1/cards?type=' + type)).data
+      const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?type=${type}`)).data
 
       cardList.innerHTML = ""
       cards = result.cards
@@ -56,7 +53,7 @@ addEventListener("DOMContentLoaded", (cards) => {
     //TODO: card name filter
     const cardNameFilter = document.querySelector('#search_card').value
     async function filterCardName(name) {
-      const result = (await axios.get('https://api.magicthegathering.io/v1/cards?name=' + name)).data
+      const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?name=${name}`)).data
 
       cardList.innerHTML = ""
       cards = result.cards
@@ -79,7 +76,7 @@ addEventListener("DOMContentLoaded", (cards) => {
     let cardColorFilter = [...checkedColors].map(e => e.value)
 
     async function filterCardColor(colors) {
-      const result = (await axios.get('https://api.magicthegathering.io/v1/cards?colors=' + colors)).data
+      const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?colors=${colors}`)).data
 
       cardList.innerHTML = ""
       cards = result.cards
