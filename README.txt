@@ -38,6 +38,9 @@ Search several colors but not combined:
 'https://api.magicthegathering.io/v1/cards?colors=R|B'
 => Will show all red(only) and all black(only) cards
 
+Array all colors checked =
+https://api.magicthegathering.io/v1/cards?colors=B,R,G,U,W
+
 
 //=== TYPES ==//
 
@@ -91,6 +94,13 @@ fetch('https://api.magicthegathering.io/v1/cards')
     }
   })
 })
+
+//=== MORE INFO CODE ===//
+  const aEl = document.createElement("a")
+      cardList.appendChild(aEl)
+      aEl.href = 'https://api.magicthegathering.io/v1/cards?colors=' + color => CARD NAME
+      aEl.textContent = "more info" => CARD NAME
+
 
 //=== OLD SWITCH COLOR CODE ===///
       switch(input){
