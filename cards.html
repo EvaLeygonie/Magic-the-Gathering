@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A database where you can search for magic cards">
+  <title>Magic the Gathering - Card database</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="CSS/style.css" rel="Stylesheet">
+</head>
+
+<body>
+  <header>
+    <a href="index.html">
+      <img class="logo_nav" src="CSS/LOGO-MAGIC.png" alt="Magic the Gathering logo">
+    </a>
+    <nav>
+      <a href="index.html">Introduction</a>
+      <a href="cards.html">Cards</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Magic the Gathering:</h1>
+    <h1>Card database</h1>
+
+    <div class="search_bar">
+      <form>
+        <select id="card_color_filter">
+          <option>Card Color</option>
+          <option>Black</option>
+          <option>Red</option>
+          <option>Green</option>
+          <option>Blue</option>
+          <option>White</option>
+        </select>
+
+        <select id="card_type_filter">
+          <option>Card Type</option>
+          <option id="creature">Creature</option>
+          <option id="sorcery">Sorcery</option>
+          <option id="instant">Instant</option>
+          <option id="enchantment">Enchantment</option>
+          <option id="artifact">Artifact</option>
+          <option id="planeswalker">Planeswalker</option>
+        </select>
+
+        <input type="text" id="search_card" placeholder="Card name">
+        <input type="submit" value="Search">
+      </form>
+    </div>
+
+    <section class="cards">
+      <div id="card_list"></div>
+    </section>
+
+  </main>
+
+  <script src="cards.js"></script>
+</body>
+
+</html>

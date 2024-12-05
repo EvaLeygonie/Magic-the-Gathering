@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(90deg,  #1B1B1B, #E63946, #3A9D23, #0078BF, #EDE6DB);
+  font-family: 'Roboto', sans-serif;
+}
+
+main {
+  padding-top: 40px;
+}
+
+img {
+  border-radius: 10px;
+}
+
+@font-face {
+  font-family: MyFont;
+  src: url(Fino.ttf);
+}
+
+h1 {
+  font-family: MyFont, serif;
+  color: #EDE6DB;
+  text-align: center;
+  font-size: 3em;
+
+}
+
+/*=== HEADER ===*/
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #1B1B1B;
+
+}
+
+header a {
+  text-decoration: none;
+  color: #EDE6DB;
+  font-size: 2em;
+  font-family: MyFont, serif;
+  padding: 0 20px;
+}
+
+.logo_nav {
+  height: 80px;
+}
+
+/*=== CARD PAGE ===*/
+
+.search_bar {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#search_product {
+  text-align: left;
+}
+
+#card_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.card_image {
+  width: 200px;
+  height: auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
