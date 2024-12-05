@@ -2,7 +2,7 @@
 SHIFT + =>/<= to select bits of code
 CMD + ALT + pil to select multiple lines
 
-Document colors:
+//=== DOCUMENT COLORS ===//
 Black: #1B1B1B
 Red: #E63946
 Green: #3A9D23

@@ -68,8 +68,8 @@ addEventListener("DOMContentLoaded", (cards) => {
     //filterCardName(cardNameFilter)
 
     //*! card color filter TO FIX!!!
-    const cardColorFilter = document.querySelector('select[id="card_colors_filter"]')
-
+    let cardColorFilter = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
+    //Ger en nodelista på alla checkade boxer som en array
     console.log(cardColorFilter)
 
     async function filterCardColor(color) {
