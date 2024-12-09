@@ -119,3 +119,27 @@ fetch('https://api.magicthegathering.io/v1/cards')
         break;
         default: color = ""
       }
+
+
+//TODO: TRY TO LINK TO FILTERED SEARCH
+
+function getQueryParam (param) {
+  const urlParams = new URLSearchParams(window.location.search)
+  return urlParams.get(param)
+}
+
+const colorFilter = getQueryParam('color')
+console.log(colorFilter)
+
+if (colorFilter) {
+  document.querySelector(`card_colors_filter-${colorFilter}`).checked = true
+  applyFilter(colorFilter)
+}
+
+function applyFilter(color) {
+  fetch(`https://api.magicthegathering.io/v1/cards?colors=${color}`)
+      .then(response => response.json())
+      .then(data => {
+          displayCards(data.cards)
+  })
+}

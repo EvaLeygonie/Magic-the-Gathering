@@ -52,15 +52,17 @@ header {
 
 /*=== HOMEPAGE ===*/
 
+/* Add a grid/flex structure? */
+
 button {
   text-decoration: none;
   font-style: oblique;
   font-weight: 600;
   background-color: #1B1B1B;
   color: #EDE6DB;
-  padding: 10px;
+  padding: 8px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 10px 10px;
 }
 
