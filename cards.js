@@ -17,15 +17,24 @@ function displayCards(cards) {
       const cardContainer = document.createElement('div')
       cardContainer.className = 'card_container'
       cardList.appendChild(cardContainer)
+
       const cardImage = document.createElement('img')
       cardImage.className = 'card_image'
       cardImage.src = card.imageUrl
       cardImage.alt = card.name
       cardContainer.appendChild(cardImage)
+
       const cardName = document.createElement('p')
       cardName.className = 'card_name'
       cardName.innerHTML = card.name
       cardContainer.appendChild(cardName)
+
+      //*! addEventListeners "onclick" => changes src to another colored heart + add to favorites page + click again, change back & remove from favorites
+      const addFavorite = document.createElement('img')
+      addFavorite.className = 'fav_icon'
+      addFavorite.src = "CSS/heart.svg"
+      addFavorite.alt = "Heart icon"
+      cardName.appendChild(addFavorite)
     }
 })
 }
