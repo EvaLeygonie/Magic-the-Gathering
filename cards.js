@@ -29,6 +29,13 @@ function displayCards(cards) {
       cardName.innerHTML = card.name
       cardContainer.appendChild(cardName)
 
+       //TODO: reduce card names that are > 15 characters
+      if (card.name.length > 18) {
+        cardName.className = 'card_name_big'
+      } else if (card.name.length > 22) {
+        cardName.className = 'card_name_biggest'
+      }
+
       //*! addEventListeners "onclick" => changes src to another colored heart + add to favorites page + click again, change back & remove from favorites
       const addFavorite = document.createElement('img')
       addFavorite.className = 'fav_icon'

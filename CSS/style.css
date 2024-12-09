@@ -40,7 +40,7 @@ h3 {
 
 p {
   color: #EDE6DB;
-  font-weight: 450;
+  font-weight: 500;
   font-size: 1em;
   text-align: center;
   margin-top: 4px;
@@ -172,6 +172,22 @@ button {
   justify-content: space-between;
   align-items: center;
   margin: 5px 15px;
+}
+
+.card_name_big {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 15px;
+  font-size: 0.8em;
+}
+
+.card_name_biggest {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 15px;
+  font-size: 0.7em;
 }
 
 .fav_icon {
