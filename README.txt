@@ -2,6 +2,9 @@
 SHIFT + =>/<= to select bits of code
 CMD + ALT + pil to select multiple lines
 
+Kommentera bort kod: OPTION + SHIFT + A
+Ta bort indentering: SHIFT + TAB
+
 //=== DOCUMENT COLORS ===//
 Black: #1B1B1B
 Red: #E63946

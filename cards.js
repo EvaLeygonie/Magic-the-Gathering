@@ -1,31 +1,31 @@
 //=== FUNCTIONS ===//
 
 const cards = []
+const allCards = []
 const cardList = document.querySelector("#card_list")
 
-//TODO: Load all cards, when page opens
 //*! Reloads all cards before filtering every time!
-//addEventListener("load", loadAllCards)
+//TODO: Load all cards, when page opens
+addEventListener("load", loadAllCards)
+
+async function loadAllCards(allCards) {
+  const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
+
+  allCards = result.cards
+
+  allCards.forEach(card => {
+    if (card.imageUrl) {
+      const cardImage = document.createElement('img')
+      cardImage.src = card.imageUrl
+      cardImage.alt = card.name
+      cardImage.className = 'card_image'
+      cardList.appendChild(cardImage)
+    }
+  })
+  return allCards
+}
 
 addEventListener("DOMContentLoaded", (cards) => {
-
-  async function loadAllCards(cards) {
-    const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
-
-    cards = result.cards
-
-    cards.forEach(card => {
-      if (card.imageUrl) {
-        const cardImage = document.createElement('img')
-        cardImage.src = card.imageUrl
-        cardImage.alt = card.name
-        cardImage.className = 'card_image'
-        cardList.appendChild(cardImage)
-      }
-    })
-  }
-loadAllCards(cards)
-
   const inputForm = document.querySelector("form")
 
   inputForm.addEventListener("submit", async (event) => {
@@ -73,8 +73,8 @@ loadAllCards(cards)
     }
     filterCardName(cardNameFilter)
 
-    //TODO: Color filters works with allCards and awitching
-    //*! doesn't exclusively show the colors choosen
+    //TODO: Color filters works with allCards and switching
+    //*! doesn't exclusively show the colors choosen => Try filter()
     let checkedColors = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
     let cardColorFilter = [...checkedColors].map(e => e.value)
 
@@ -83,6 +83,8 @@ loadAllCards(cards)
 
       cardList.innerHTML = ""
       cards = result.cards
+      /*let cardsFiltered = cards.filter((cards) => cards.colors == colors)
+      console.log(cardsFiltered)*/
 
       cards.forEach(card => {
         if (card.imageUrl) {
