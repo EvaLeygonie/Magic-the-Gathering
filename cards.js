@@ -14,15 +14,18 @@ function displayCards(cards) {
 
   cards.forEach(card => {
     if (card.imageUrl) {
+      const cardContainer = document.createElement('div')
+      cardContainer.className = 'card_container'
       const cardImage = document.createElement('img')
       cardImage.src = card.imageUrl
       cardImage.alt = card.name
       cardImage.className = 'card_image'
-      cardList.appendChild(cardImage)
+      cardContainer.appendChild(cardImage)
       const cardName = document.createElement('p')
       cardName.innerHTML = card.name
       cardName.className = 'card_name'
-      cardList.append(cardName)
+      cardContainer.appendChild(cardName)
+      cardList.appendChild(cardContainer)
     }
 })
 }
@@ -42,7 +45,6 @@ addEventListener("DOMContentLoaded", () => {
     if (cardTypeFilter) queryParams.push(`type=${cardTypeFilter}`)
     if (cardNameFilter) queryParams.push(`name=${cardNameFilter}`)
     if (checkedColors) queryParams.push(`colors=${cardColorFilter}`)
-
     const queryString = queryParams.join("&")
 
     const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryString}`)).data
