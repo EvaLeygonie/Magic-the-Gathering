@@ -19,6 +19,10 @@ function displayCards(cards) {
       cardImage.alt = card.name
       cardImage.className = 'card_image'
       cardList.appendChild(cardImage)
+      const cardName = document.createElement('p')
+      cardName.innerHTML = card.name
+      cardName.className = 'card_name'
+      cardList.append(cardName)
     }
 })
 }
@@ -34,11 +38,6 @@ addEventListener("DOMContentLoaded", () => {
     const checkedColors = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
     const cardColorFilter = [...checkedColors].map(e => e.value)
 
-    console.log(cardTypeFilter)
-    console.log(cardNameFilter)
-    console.log(checkedColors)
-    console.log(cardColorFilter)
-
     let queryParams = []
     if (cardTypeFilter) queryParams.push(`type=${cardTypeFilter}`)
     if (cardNameFilter) queryParams.push(`name=${cardNameFilter}`)
@@ -49,5 +48,11 @@ addEventListener("DOMContentLoaded", () => {
     const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryString}`)).data
     const filteredCards = result.cards
     displayCards(filteredCards)
+    console.log(filteredCards)
+
+    const aEl = document.createElement("a")
+    cardList.appendChild(aEl)
+    aEl.href = 'https://api.magicthegathering.io/v1/cards?colors=' + color
+    aEl.textContent = "more info"
   })
 })

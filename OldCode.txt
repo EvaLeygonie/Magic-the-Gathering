@@ -1,0 +1,74 @@
+//=== AXIOS FUNCTIONS ===//
+
+=== TYPE FILTER ===
+ const cardTypeFilter = document.querySelector('select[id="card_type_filter"]').value
+    async function filterCardType(type) {
+      const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?type=${type}`)).data
+    }
+
+=== NAME FILTER ===
+const cardNameFilter = document.querySelector('#search_card').value
+    async function filterCardName(name) {
+      const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?name=${name}`)).data
+    }
+
+=== COLOR FILTER ===
+  let checkedColors = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
+  let cardColorFilter = [...checkedColors].map(e => e.value)
+    async function filterCardColor(colors) {
+      const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?colors=${colors}`)).data
+    }
+
+//=== MORE INFO CODE ===//
+  const aEl = document.createElement("a")
+      cardList.appendChild(aEl)
+      aEl.href = 'https://api.magicthegathering.io/v1/cards?colors=' + color => CARD NAME
+      aEl.textContent = "more info" => CARD NAME
+
+
+//=== OLD SWITCH COLOR CODE ===///
+      switch(input){
+        case "Black": color = "B"
+        break;
+        case "Red": color= "R"
+        break;
+        case "Green": color = "G"
+        break;
+        case "Blue": color= "U"
+        break;
+        case "White": color= "W"
+        break;
+        default: color = ""
+      }
+
+
+//TODO: TRY TO LINK TO FILTERED SEARCH
+
+function getQueryParam (param) {
+  const urlParams = new URLSearchParams(window.location.search)
+  return urlParams.get(param)
+}
+
+const colorFilter = getQueryParam('color')
+console.log(colorFilter)
+
+if (colorFilter) {
+  document.querySelector(`card_colors_filter-${colorFilter}`).checked = true
+  applyFilter(colorFilter)
+}
+
+function applyFilter(color) {
+  fetch(`https://api.magicthegathering.io/v1/cards?colors=${color}`)
+      .then(response => response.json())
+      .then(data => {
+          displayCards(data.cards)
+  })
+}
+
+//TODO: try to fix color filter problem
+
+const refinedCards = filteredCards.filter(card => {
+      const cardColors = card.colors.sort()
+      const selectedColors = cardColorFilter.sort()
+      cardColors === selectedColors
+    })

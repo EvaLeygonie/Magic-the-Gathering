@@ -68,78 +68,8 @@ https://api.magicthegathering.io/v1/cards?name= ...
 
 'https://api.magicthegathering.io/v1/cards?types=creature&colors=R'
 
-
-
-//=== AXIOS ===//
-
-async function loadCards() {
-  const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
-}
-loadCards()
-
-// => Not the cards, just the data from the website
-
-//=== FETCH ===//
-
-fetch('https://api.magicthegathering.io/v1/cards')
-.then((response) => response.json())
-.then((result) => {
-  const cards = result.cards
-  const cardList = document.querySelector("#card_list")
-
-  cards.forEach(card => {
-    if (card.imageUrl) {
-      const cardImage = document.createElement('img')
-      cardImage.src = card.imageUrl
-      cardImage.alt = card.name
-      cardImage.className = 'card_image'
-      cardList.appendChild(cardImage)
-    }
-  })
-})
-
-//=== MORE INFO CODE ===//
-  const aEl = document.createElement("a")
-      cardList.appendChild(aEl)
-      aEl.href = 'https://api.magicthegathering.io/v1/cards?colors=' + color => CARD NAME
-      aEl.textContent = "more info" => CARD NAME
-
-
-//=== OLD SWITCH COLOR CODE ===///
-      switch(input){
-        case "Black": color = "B"
-        break;
-        case "Red": color= "R"
-        break;
-        case "Green": color = "G"
-        break;
-        case "Blue": color= "U"
-        break;
-        case "White": color= "W"
-        break;
-        default: color = ""
-      }
-
-
-//TODO: TRY TO LINK TO FILTERED SEARCH
-
-function getQueryParam (param) {
-  const urlParams = new URLSearchParams(window.location.search)
-  return urlParams.get(param)
-}
-
-const colorFilter = getQueryParam('color')
-console.log(colorFilter)
-
-if (colorFilter) {
-  document.querySelector(`card_colors_filter-${colorFilter}`).checked = true
-  applyFilter(colorFilter)
-}
-
-function applyFilter(color) {
-  fetch(`https://api.magicthegathering.io/v1/cards?colors=${color}`)
-      .then(response => response.json())
-      .then(data => {
-          displayCards(data.cards)
-  })
-}
+//=== HOMEPAGE API ===//
+Mana symbols:
+https://api.scryfall.com/symbology
+object 75: White (colors[0] = W)
+etc.
