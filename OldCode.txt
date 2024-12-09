@@ -72,3 +72,44 @@ const refinedCards = filteredCards.filter(card => {
       const selectedColors = cardColorFilter.sort()
       cardColors === selectedColors
     })
+
+//=== HOME PAGE BUTTONS ===//
+
+<a href="cards.html?colors=B">
+        <button id="black_color">Black cards</button>
+      </a>
+      <a href="cards.html?colors=R">
+        <button id="red_color">Red cards</button>
+      </a>
+      <a href="cards.html?colors=G">
+        <button id="green_color">Green cards</button>
+      </a>
+      <a href="cards.html?colors=U">
+        <button id="blue_color">Blue cards</button>
+      </a>
+      <a href="cards.html?colors=W">
+        <button id="white_color">White cards</button>
+      </a>
+
+CSS
+
+#black_color {
+  background-color: #1B1B1B;
+}
+
+#red_color {
+  background-color: #E63946;
+}
+
+#green_color {
+  background-color: #3A9D23;
+}
+
+#blue_color {
+  background-color: #0078BF;
+}
+
+#white_color {
+  background-color: #EDE6DB;
+  color: #1B1B1B;
+}

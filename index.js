@@ -19,10 +19,13 @@ async function loadSymbols() {
 
 function displaySymbols (symbols) {
  symbols.forEach(symbol => {
+  const colorContainer = document.createElement('div')
+  colorContainer.className = 'color_container'
   const colorSymbol = document.createElement('img')
   colorSymbol.src = symbol.svg_uri
   colorSymbol.alt = symbol.english
   colorSymbol.className = 'color_symbols'
-  magicColors.appendChild(colorSymbol)
+  magicColors.appendChild(colorContainer)
+  colorContainer.appendChild(colorSymbol)
  })
 }
