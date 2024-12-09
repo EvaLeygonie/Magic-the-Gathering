@@ -5,5 +5,5 @@
 addEventListener("load", loadAllInfo)
 
 async function loadAllInfo() {
-  const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
+  const result = (await axios.get('https://api.scryfall.com/symbology')).data
 }

@@ -50,6 +50,41 @@ header {
   height: 80px;
 }
 
+/*=== HOMEPAGE ===*/
+
+button {
+  text-decoration: none;
+  font-style: oblique;
+  font-weight: 600;
+  background-color: #1B1B1B;
+  color: #EDE6DB;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 10px 10px;
+}
+
+#black_color {
+  background-color: #1B1B1B;
+}
+
+#red_color {
+  background-color: #E63946;
+}
+
+#green_color {
+  background-color: #3A9D23;
+}
+
+#blue_color {
+  background-color: #0078BF;
+}
+
+#white_color {
+  background-color: #EDE6DB;
+  color: #1B1B1B;
+}
+
 /*=== CARD PAGE ===*/
 
 .filter_bar {
