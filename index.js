@@ -1,7 +1,3 @@
-//TODO: Get info about the game
-//TODO: Import info about colors & card types
-//TODO: Create buttons for each category that leads to filtered search
-
 const magicColors = document.querySelector("#magic_colors")
 
 addEventListener("load", loadSymbols)

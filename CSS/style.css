@@ -80,7 +80,9 @@ header {
 
 .color_symbols {
   width: 100px;
-  padding: 20px;
+  margin: 20px;
+  border-radius: 50px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 #magic_card_types {
