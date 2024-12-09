@@ -11,10 +11,6 @@ main {
   padding-top: 40px;
 }
 
-img {
-  border-radius: 10px;
-}
-
 @font-face {
   font-family: MyFont;
   src: url(Fino.ttf);
@@ -60,7 +56,25 @@ header {
 
 /*=== HOMEPAGE ===*/
 
-/* Add a grid/flex structure? */
+#magic_colors {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+  }
+
+.color_symbols {
+  width: 50px;
+}
+
+#magic_card_types {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+}
 
 button {
   text-decoration: none;
@@ -124,6 +138,7 @@ button {
 }
 
 .card_image {
+  border-radius: 10px;
   width: 200px;
   height: auto;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);

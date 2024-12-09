@@ -71,5 +71,9 @@ https://api.magicthegathering.io/v1/cards?name= ...
 //=== HOMEPAGE API ===//
 Mana symbols:
 https://api.scryfall.com/symbology
-object 75: White (colors[0] = W)
-etc.
+
+white: 75
+blue: 76
+black: 77
+red: 78
+green: 79
