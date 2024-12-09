@@ -30,6 +30,14 @@ h2 {
   font-size: 1.8em;
 }
 
+h3 {
+  color: #EDE6DB;
+  font-weight: 500;
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 2px;
+}
+
 p {
   color: #EDE6DB;
   font-weight: 500;
@@ -50,10 +58,20 @@ header {
     a {
       text-decoration: none;
       color: #EDE6DB;
-      font-size: 2em;
+      font-size: 1.8em;
       font-family: MyFont, serif;
       padding: 0 20px;
     }
+
+    img {
+      height: 40px;;
+    }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
 .logo_nav {
@@ -70,19 +88,23 @@ header {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.color_container {
+  text-align: center;
+}
+
 #magic_colors {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: 10px;
+    margin: 20px;
   }
 
 .color_symbols {
   width: 100px;
-  margin: 20px;
   border-radius: 50px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 5px;
 }
 
 #magic_card_types {
@@ -100,10 +122,14 @@ button {
   font-size: 1.1em;
   background-color: #1B1B1B;
   color: #EDE6DB;
-  padding: 8px;
+  padding: 8px 12px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
-  margin: 10px 10px;
+  margin: 10px 5px;
+}
+
+.color_name {
+  padding: 8px 20px;
 }
 
 /*=== CARD PAGE ===*/

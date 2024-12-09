@@ -41,6 +41,20 @@ const cardNameFilter = document.querySelector('#search_card').value
         default: color = ""
       }
 
+       switch(color){
+        case "B": color = "Black"
+        break;
+        case "R": color= "Red"
+        break;
+        case "G": color = "Green"
+        break;
+        case "U": color= "Blue"
+        break;
+        case "W": color= "White"
+        break;
+        default: color = ""
+      }
+
 
 //TODO: TRY TO LINK TO FILTERED SEARCH
 

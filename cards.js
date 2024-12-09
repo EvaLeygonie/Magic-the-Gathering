@@ -16,16 +16,16 @@ function displayCards(cards) {
     if (card.imageUrl) {
       const cardContainer = document.createElement('div')
       cardContainer.className = 'card_container'
+      cardList.appendChild(cardContainer)
       const cardImage = document.createElement('img')
+      cardImage.className = 'card_image'
       cardImage.src = card.imageUrl
       cardImage.alt = card.name
-      cardImage.className = 'card_image'
       cardContainer.appendChild(cardImage)
       const cardName = document.createElement('p')
-      cardName.innerHTML = card.name
       cardName.className = 'card_name'
+      cardName.innerHTML = card.name
       cardContainer.appendChild(cardName)
-      cardList.appendChild(cardContainer)
     }
 })
 }
