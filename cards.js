@@ -45,9 +45,8 @@ function displayCards(cards) {
       //*! toggle color + add/remove from favorites page
       addFavorite.addEventListener("click", () => {
         addFavorite.src = "CSS/heart-black.svg"
-
-        console.log(addFavorite.getAttribute('src'))
-    /*     if (source == "CSS/heart-black.svg") {
+        /* console.log(addFavorite.getAttribute('src'))
+        if (source == "CSS/heart-black.svg") {
           addFavorite.src = "CSS/heart.svg"
         } */
 
@@ -57,6 +56,15 @@ function displayCards(cards) {
 }
 
 addEventListener("DOMContentLoaded", () => {
+
+  //let queryParamsType =
+
+  if (URLSearchParams = '?types=creature'){
+    document.querySelector(`[value=creature]`).selected = true
+    /* const result = (await axios.get('https://api.magicthegathering.io/v1/cards?types=creature')).data
+    const cards = result.cards */
+  }
+
   const inputForm = document.querySelector("form")
 
   inputForm.addEventListener("submit", async (event) => {
