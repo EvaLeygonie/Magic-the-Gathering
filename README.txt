@@ -77,3 +77,30 @@ blue: 76
 black: 77
 red: 78
 green: 79
+
+
+//=== FILTER FUNCTION TYPES===//
+
+let filterTest = document.querySelector("#filter_test")
+filterTest.addEventListener("click", testDisplayCardTypes)
+
+async function testDisplayCardTypes() {
+  cardList.innerHTML = ""
+
+  const cardTypeButton = 'sorcery'
+  const cardType = document.querySelector(`[value=${cardTypeButton}]`)
+  cardType.selected = true
+
+  const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?types=${cardTypeButton}`)).data
+  const cards = result.cards
+
+  cards.forEach(card => {
+    if (card.imageUrl) {
+      const cardImage = document.createElement('img')
+      cardImage.className = 'card_image'
+      cardImage.src = card.imageUrl
+      cardImage.alt = card.name
+      cardList.appendChild(cardImage)
+    }
+  })
+}

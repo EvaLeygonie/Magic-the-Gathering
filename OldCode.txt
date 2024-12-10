@@ -1,6 +1,6 @@
 //=== PROBLEMS ===//
 
-//TODO: TRY TO LINK TO FILTERED SEARCH
+//=== TRY TO LINK TO FILTERED SEARCH ===//
 
 function getQueryParam (param) {
   const urlParams = new URLSearchParams(window.location.search)
@@ -22,6 +22,12 @@ function applyFilter(color) {
           displayCards(data.cards)
   })
 }
+
+BUTTON CHANGE URL
+
+let typeButton = document.querySelectorAll('#magic_card_types a')
+typeButton[0].href = 'favorites.html'
+console.log(typeButton)
 
 //=== COLOR FILTER ===//
 

@@ -1,12 +1,14 @@
-const cardList = document.querySelector("#card_list")
+let filterTest = document.querySelector("#filter_test")
+filterTest.addEventListener("click", testDisplayCardTypes)
 
-addEventListener("load", loadAllCards)
+async function testDisplayCardTypes() {
+  const cardTypeButton = 'sorcery'
+  document.querySelector(`[value=${cardTypeButton}]`).selected = true
 
-async function loadAllCards() {
-  const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
+  const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?types=${cardTypeButton}`)).data
+  const cardTypeSort = result.cards
 
-  const allCards = result.cards
-  displayCards(allCards)
+  displayCards(cardTypeSort)
 }
 
 function displayCards(cards) {
@@ -53,27 +55,3 @@ function displayCards(cards) {
     }
 })
 }
-
-addEventListener("DOMContentLoaded", () => {
-  const inputForm = document.querySelector("form")
-
-  inputForm.addEventListener("submit", async (event) => {
-    event.preventDefault()
-
-    const cardTypeFilter = document.querySelector('select[id="card_type_filter"]').value
-    const cardNameFilter = document.querySelector('#search_card').value
-    const checkedColors = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
-    const cardColorFilter = [...checkedColors].map(e => e.value)
-
-    let queryParams = []
-    if (cardTypeFilter) queryParams.push(`type=${cardTypeFilter}`)
-    if (cardNameFilter) queryParams.push(`name=${cardNameFilter}`)
-    if (checkedColors) queryParams.push(`colors=${cardColorFilter}`)
-    const queryString = queryParams.join("&")
-
-    const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryString}`)).data
-
-    const filteredCards = result.cards
-    displayCards(filteredCards)
-  })
-})
