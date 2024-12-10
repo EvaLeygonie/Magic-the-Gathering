@@ -1,18 +1,24 @@
-let filterTest = document.querySelector("#filter_test")
-filterTest.addEventListener("click", testDisplayCardTypes)
+//let filterTest = document.querySelector("#filter_test")
+//filterTest.addEventListener("click", testDisplayCardTypes)
 
-async function testDisplayCardTypes() {
-  const cardTypeButton = 'sorcery'
-  document.querySelector(`[value=${cardTypeButton}]`).selected = true
+//let cardTypeButton = document.querySelector('#magic_card_types a')
+//console.log(cardTypeButton)
 
-  const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?types=${cardTypeButton}`)).data
-  const cardTypeSort = result.cards
+/*let creatureType = document.querySelector('button[value=creature]').value
+console.log(creatureType)*/
 
-  displayCards(cardTypeSort)
-}
+//document.querySelector(`[value=${cardTypeButton}]`).selected = true
 
-function displayCards(cards) {
+let creatureType = document.querySelector('button[value=creature]')
+
+creatureType.addEventListener("click", filterCreatures)
+
+async function filterCreatures() {
   cardList.innerHTML = ""
+  document.querySelector(`[value=creature]`).selected = true
+
+  const result = (await axios.get('https://api.magicthegathering.io/v1/cards?types=creature')).data
+  const cards = result.cards
 
   cards.forEach(card => {
     if (card.imageUrl) {

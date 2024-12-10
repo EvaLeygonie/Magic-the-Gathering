@@ -36,7 +36,7 @@ function displayCards(cards) {
         cardName.className = 'card_name_biggest'
       }
 
-      const addFavorite = document.createElement('img')
+      let addFavorite = document.createElement('img')
       addFavorite.className = 'fav_icon'
       addFavorite.src = "CSS/heart.svg"
       addFavorite.alt = "Heart icon"
@@ -44,11 +44,13 @@ function displayCards(cards) {
 
       //*! toggle color + add/remove from favorites page
       addFavorite.addEventListener("click", () => {
-        if (addFavorite.src = "CSS/heart.svg") {
-          addFavorite.src = "CSS/heart-black.svg"
-        } else if (addFavorite.src = "CSS/heart-black.svg"){
+        addFavorite.src = "CSS/heart-black.svg"
+
+        console.log(addFavorite.getAttribute('src'))
+    /*     if (source == "CSS/heart-black.svg") {
           addFavorite.src = "CSS/heart.svg"
-        }
+        } */
+
       })
     }
 })

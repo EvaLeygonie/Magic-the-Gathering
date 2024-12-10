@@ -81,9 +81,6 @@ green: 79
 
 //=== FILTER FUNCTION TYPES===//
 
-let filterTest = document.querySelector("#filter_test")
-filterTest.addEventListener("click", testDisplayCardTypes)
-
 async function testDisplayCardTypes() {
   cardList.innerHTML = ""
 
