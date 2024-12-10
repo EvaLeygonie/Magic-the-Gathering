@@ -86,8 +86,12 @@ addEventListener("DOMContentLoaded", () => {
     const queryString = queryParams.join("&")
 
     const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryString}`)).data
+    //const filteredCards = result.cards
 
-    const filteredCards = result.cards
+    //*! filter doesn't work without a selected color
+    const cards = result.cards
+    const filteredCards = cards.filter(card => JSON.stringify(card.colors) === JSON.stringify(cardColorFilter))
+
     displayCards(filteredCards)
   })
 })

@@ -91,3 +91,23 @@ async function filterCreatures() {
     }
 })
 }
+
+//=== TEST COLOR FILTER FIX ===//
+  const result = (await axios.get(`https://api.magicthegathering.io/v1/cardscolors=${colors}`)).data
+  const allColorsCards = result.cards
+  console.log(colors)
+  console.log(allColorsCards)
+
+   const filteredColoredCards = allColorsCards.filter(card => {
+    const cardColors = card.colors.sort().join(",")
+    const selectedColors = cardColorFilter.sort().join(",")
+    return cardColors === selectedColors
+  })
+
+
+  console.log(filteredCards[1].colors)
+  console.log(cardColorFilter)
+  console.log(filteredCards[1].colors === cardColorFilter)//False
+  console.log(JSON.stringify(filteredCards[1].colors))
+  console.log(JSON.stringify(cardColorFilter))
+  console.log(JSON.stringify(filteredCards[1].colors) === JSON.stringify(cardColorFilter)) //True

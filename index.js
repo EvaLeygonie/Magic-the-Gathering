@@ -24,35 +24,10 @@ function displaySymbols (symbols) {
   colorLink.href = `cards.html?colors=${color}`
   magicColors.appendChild(colorLink)
 
-/*   const colorContainer = document.createElement('div')
-  colorContainer.className = 'color_container'
-  colorLink.appendChild(colorContainer) */
-
   const colorSymbol = document.createElement('img')
   colorSymbol.className = 'color_symbols'
   colorSymbol.src = symbol.svg_uri
   colorSymbol.alt = symbol.english
   colorLink.appendChild(colorSymbol)
-  //colorContainer.appendChild(colorSymbol)
-
-/*   let color = symbol.colors[0]
-  switch(color){
-    case "B": color = "Black"
-    break;
-    case "R": color= "Red"
-    break;
-    case "G": color = "Green"
-    break;
-    case "U": color= "Blue"
-    break;
-    case "W": color= "White"
-    break;
-    default: color = ""
-  }
-
-  const colorName = document.createElement('button')
-  colorName.className = 'color_name'
-  colorName.innerHTML = color
-  colorContainer.appendChild(colorName) */
  })
 }
