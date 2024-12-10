@@ -28,6 +28,8 @@
     <h1>Magic: the Gathering</h1>
     <h1>Card database</h1>
 
+    <button id="filter_test">Filter test</button>
+
     <form class="filter_bar">
       <div id="card_colors_filter">
         <span><b>Card Color:</b></span>
@@ -44,15 +46,15 @@
         </select>
       </div>
 
-      <div id="card_type_name"></div>
+      <div class="card_type"></div>
       <select id="card_type_filter">
         <option value="">Card Type</option>
-        <option id="creature">Creature</option>
-        <option id="sorcery">Sorcery</option>
-        <option id="instant">Instant</option>
-        <option id="enchantment">Enchantment</option>
-        <option id="artifact">Artifact</option>
-        <option id="planeswalker">Planeswalker</option>
+        <option value="creature">Creature</option>
+        <option value="sorcery">Sorcery</option>
+        <option value="instant">Instant</option>
+        <option value="enchantment">Enchantment</option>
+        <option value="artifact">Artifact</option>
+        <option value="planeswalker">Planeswalker</option>
       </select>
 
       <input type="text" id="search_card" placeholder="Card name">

@@ -77,3 +77,30 @@ addEventListener("DOMContentLoaded", () => {
     displayCards(filteredCards)
   })
 })
+
+
+//TODO: TEST FILTER PARAMS LINK
+
+//On index page buttons
+let filterTest = document.querySelector("#filter_test")
+filterTest.addEventListener("click", testDisplayCreatures)
+
+async function testDisplayCreatures() {
+  cardList.innerHTML = ""
+
+  const creatureType = document.querySelector('[value=creature]')
+  creatureType.selected = true
+
+  const result = (await axios.get('https://api.magicthegathering.io/v1/cards?types=creature')).data
+  const cards = result.cards
+
+  cards.forEach(card => {
+    if (card.imageUrl) {
+      const cardImage = document.createElement('img')
+      cardImage.className = 'card_image'
+      cardImage.src = card.imageUrl
+      cardImage.alt = card.name
+      cardList.appendChild(cardImage)
+    }
+  })
+}
