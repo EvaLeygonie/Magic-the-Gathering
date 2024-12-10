@@ -1,42 +1,44 @@
-//let filterTest = document.querySelector("#filter_test")
-//filterTest.addEventListener("click", testDisplayCardTypes)
+//=== OLD DISPLAY CARD CONTAINER WITH BUTTON ===//
 
-//let cardTypeButton = document.querySelector('#magic_card_types a')
-//console.log(cardTypeButton)
+function displaySymbols (symbols) {
+  symbols.forEach(symbol => {
+   const colorLink = document.createElement('a')
+   colorLink.href = `cards.html?colors=${color}`
+   magicColors.appendChild(colorLink)
 
-/*let creatureType = document.querySelector('button[value=creature]').value
-console.log(creatureType)*/
+   const colorContainer = document.createElement('div')
+   colorContainer.className = 'color_container'
+   colorLink.appendChild(colorContainer)
 
-//document.querySelector(`[value=${cardTypeButton}]`).selected = true
-
-//=== QUERY PARAMS ===//
-for (const [types, creature] of mySearchParams) {
-  document.querySelector(`[value=creature]`).selected = true
+   const colorSymbol = document.createElement('img')
+   colorSymbol.className = 'color_symbols'
+   colorSymbol.src = symbol.svg_uri
+   colorSymbol.alt = symbol.english
+  colorContainer.appendChild(colorSymbol)
+  })
 }
 
-/*if (filterParams.has('types')){
-  console.log(filterParams.values())
-  //loadFilteredCards()
-}*/
+let color = symbol.colors[0]
+   switch(color){
+     case "B": color = "Black"
+     break;
+     case "R": color= "Red"
+     break;
+     case "G": color = "Green"
+     break;
+     case "U": color= "Blue"
+     break;
+     case "W": color= "White"
+     break;
+     default: color = ""
+   }
 
+   const colorName = document.createElement('button')
+   colorName.className = 'color_name'
+   colorName.innerHTML = color
+   colorContainer.appendChild(colorName)
 
-if (URLSearchParams){ // same as = "?types=creature"
-  document.querySelector(`[value=creature]`).selected = true
-  let queryParams = 'types=creature'
-  loadFilteredCards(queryParams)
-} /* else if (URLSearchParams = '?types=sorcery'){
-  document.querySelector(`[value=sorcery]`).selected = true
-  let queryParams = 'types=sorcery'
-  loadFilteredCards(queryParams) */
-
-//*! Remove query Parameters afterwards? + make it one code that adapts to the value?
-/* if (URLSearchParams.has('types')){
-  document.querySelector(`[value=creature]`).selected = true
-  let queryParams = 'types=creature'
-  loadFilteredCards(queryParams)*/
-
-
-
+//=== TEST FILTERED SEARCH BUTTON ===//
 let creatureType = document.querySelector('button[value=creature]')
 
 creatureType.addEventListener("click", filterCreatures)

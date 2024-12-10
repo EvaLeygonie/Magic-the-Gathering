@@ -9,8 +9,14 @@ async function loadAllCards() {
   const colorFilter = params.get("colors")
 
   let queryParam = ""
-  if (typeFilter) queryParam = `types=${typeFilter}`
-  if (colorFilter) queryParam = `colors=${colorFilter}`
+  if (typeFilter) {
+    queryParam = `types=${typeFilter}`
+    document.querySelector(`[value=${typeFilter}]`).selected = true
+  }
+  if (colorFilter) {
+    queryParam = `colors=${colorFilter}`
+    document.querySelector(`[value=${colorFilter}]`).checked = true
+  }
 
   const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryParam}`)).data
 

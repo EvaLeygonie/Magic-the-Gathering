@@ -19,22 +19,23 @@ async function loadSymbols() {
 
 function displaySymbols (symbols) {
  symbols.forEach(symbol => {
-  //*! Add a unique link for each symbol.colors[0]
+  let color = symbol.colors[0]
   const colorLink = document.createElement('a')
-  colorLink.href = 'cards.html'
+  colorLink.href = `cards.html?colors=${color}`
   magicColors.appendChild(colorLink)
 
-  const colorContainer = document.createElement('div')
+/*   const colorContainer = document.createElement('div')
   colorContainer.className = 'color_container'
-  colorLink.appendChild(colorContainer)
+  colorLink.appendChild(colorContainer) */
 
   const colorSymbol = document.createElement('img')
   colorSymbol.className = 'color_symbols'
   colorSymbol.src = symbol.svg_uri
   colorSymbol.alt = symbol.english
-  colorContainer.appendChild(colorSymbol)
+  colorLink.appendChild(colorSymbol)
+  //colorContainer.appendChild(colorSymbol)
 
-  let color = symbol.colors[0]
+/*   let color = symbol.colors[0]
   switch(color){
     case "B": color = "Black"
     break;
@@ -52,6 +53,6 @@ function displaySymbols (symbols) {
   const colorName = document.createElement('button')
   colorName.className = 'color_name'
   colorName.innerHTML = color
-  colorContainer.appendChild(colorName)
+  colorContainer.appendChild(colorName) */
  })
 }
