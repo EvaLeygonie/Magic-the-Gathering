@@ -19,6 +19,24 @@ for (const [types, creature] of mySearchParams) {
   //loadFilteredCards()
 }*/
 
+
+if (URLSearchParams){ // same as = "?types=creature"
+  document.querySelector(`[value=creature]`).selected = true
+  let queryParams = 'types=creature'
+  loadFilteredCards(queryParams)
+} /* else if (URLSearchParams = '?types=sorcery'){
+  document.querySelector(`[value=sorcery]`).selected = true
+  let queryParams = 'types=sorcery'
+  loadFilteredCards(queryParams) */
+
+//*! Remove query Parameters afterwards? + make it one code that adapts to the value?
+/* if (URLSearchParams.has('types')){
+  document.querySelector(`[value=creature]`).selected = true
+  let queryParams = 'types=creature'
+  loadFilteredCards(queryParams)*/
+
+
+
 let creatureType = document.querySelector('button[value=creature]')
 
 creatureType.addEventListener("click", filterCreatures)

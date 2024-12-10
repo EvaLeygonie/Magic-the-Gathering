@@ -4,7 +4,15 @@ const inputForm = document.querySelector("form")
 addEventListener("load", loadAllCards)
 
 async function loadAllCards() {
-  const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
+  const params = new URLSearchParams(window.location.search)
+  const typeFilter = params.get("types")
+  const colorFilter = params.get("colors")
+
+  let queryParam = ""
+  if (typeFilter) queryParam = `types=${typeFilter}`
+  if (colorFilter) queryParam = `colors=${colorFilter}`
+
+  const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryParam}`)).data
 
   const allCards = result.cards
   displayCards(allCards)
@@ -57,14 +65,6 @@ function displayCards(cards) {
 }
 
 addEventListener("DOMContentLoaded", () => {
-
-  //*! Remove query Parameters afterwards?
-  if (URLSearchParams = '?types=creature'){
-    document.querySelector(`[value=creature]`).selected = true
-    let queryParams = 'types=creature'
-    loadFilteredCards(queryParams)
-  }
-
   inputForm.addEventListener("submit", async (event) => {
     event.preventDefault()
 
@@ -79,13 +79,9 @@ addEventListener("DOMContentLoaded", () => {
     if (checkedColors) queryParams.push(`colors=${cardColorFilter}`)
     const queryString = queryParams.join("&")
 
-    loadFilteredCards(queryString)
-  })
-
-  async function loadFilteredCards (queryString) {
     const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryString}`)).data
 
     const filteredCards = result.cards
     displayCards(filteredCards)
-  }
+  })
 })
