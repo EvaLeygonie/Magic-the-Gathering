@@ -36,12 +36,20 @@ function displayCards(cards) {
         cardName.className = 'card_name_biggest'
       }
 
-      //*! addEventListeners "onclick" => changes src to another colored heart + add to favorites page + click again, change back & remove from favorites
       const addFavorite = document.createElement('img')
       addFavorite.className = 'fav_icon'
       addFavorite.src = "CSS/heart.svg"
       addFavorite.alt = "Heart icon"
       cardName.appendChild(addFavorite)
+
+      //*! toggle color + add/remove from favorites page
+      addFavorite.addEventListener("click", () => {
+        if (addFavorite.src = "CSS/heart.svg") {
+          addFavorite.src = "CSS/heart-black.svg"
+        } else if (addFavorite.src = "CSS/heart-black.svg"){
+          addFavorite.src = "CSS/heart.svg"
+        }
+      })
     }
 })
 }
@@ -64,13 +72,8 @@ addEventListener("DOMContentLoaded", () => {
     const queryString = queryParams.join("&")
 
     const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryString}`)).data
+
     const filteredCards = result.cards
     displayCards(filteredCards)
-    console.log(filteredCards)
-
-    const aEl = document.createElement("a")
-    cardList.appendChild(aEl)
-    aEl.href = 'https://api.magicthegathering.io/v1/cards?colors=' + color
-    aEl.textContent = "more info"
   })
 })

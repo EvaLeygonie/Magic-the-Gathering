@@ -1,3 +1,39 @@
+//=== PROBLEMS ===//
+
+//TODO: TRY TO LINK TO FILTERED SEARCH
+
+function getQueryParam (param) {
+  const urlParams = new URLSearchParams(window.location.search)
+  return urlParams.get(param)
+}
+
+const colorFilter = getQueryParam('color')
+console.log(colorFilter)
+
+if (colorFilter) {
+  document.querySelector(`card_colors_filter-${colorFilter}`).checked = true
+  applyFilter(colorFilter)
+}
+
+function applyFilter(color) {
+  fetch(`https://api.magicthegathering.io/v1/cards?colors=${color}`)
+      .then(response => response.json())
+      .then(data => {
+          displayCards(data.cards)
+  })
+}
+
+//=== COLOR FILTER ===//
+
+const refinedCards = filteredCards.filter(card => {
+      const cardColors = card.colors.sort()
+      const selectedColors = cardColorFilter.sort()
+      cardColors === selectedColors
+    })
+
+
+
+
 //=== AXIOS FUNCTIONS ===//
 
 === TYPE FILTER ===
@@ -54,38 +90,6 @@ const cardNameFilter = document.querySelector('#search_card').value
         break;
         default: color = ""
       }
-
-
-//TODO: TRY TO LINK TO FILTERED SEARCH
-
-function getQueryParam (param) {
-  const urlParams = new URLSearchParams(window.location.search)
-  return urlParams.get(param)
-}
-
-const colorFilter = getQueryParam('color')
-console.log(colorFilter)
-
-if (colorFilter) {
-  document.querySelector(`card_colors_filter-${colorFilter}`).checked = true
-  applyFilter(colorFilter)
-}
-
-function applyFilter(color) {
-  fetch(`https://api.magicthegathering.io/v1/cards?colors=${color}`)
-      .then(response => response.json())
-      .then(data => {
-          displayCards(data.cards)
-  })
-}
-
-//TODO: try to fix color filter problem
-
-const refinedCards = filteredCards.filter(card => {
-      const cardColors = card.colors.sort()
-      const selectedColors = cardColorFilter.sort()
-      cardColors === selectedColors
-    })
 
 //=== HOME PAGE BUTTONS ===//
 
