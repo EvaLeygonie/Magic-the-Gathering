@@ -91,7 +91,7 @@ addEventListener("DOMContentLoaded", () => {
 
     if (cardColorFilter.length > 0) {
       filteredCards = result.cards.filter(card =>
-        JSON.stringify(card.colors) === JSON.stringify(cardColorFilter)
+        JSON.stringify(card.colors.sort()) === JSON.stringify(cardColorFilter.sort())
       )
     }
 
