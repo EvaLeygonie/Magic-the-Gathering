@@ -9,6 +9,16 @@ console.log(creatureType)*/
 
 //document.querySelector(`[value=${cardTypeButton}]`).selected = true
 
+//=== QUERY PARAMS ===//
+for (const [types, creature] of mySearchParams) {
+  document.querySelector(`[value=creature]`).selected = true
+}
+
+/*if (filterParams.has('types')){
+  console.log(filterParams.values())
+  //loadFilteredCards()
+}*/
+
 let creatureType = document.querySelector('button[value=creature]')
 
 creatureType.addEventListener("click", filterCreatures)
