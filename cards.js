@@ -12,8 +12,7 @@ async function loadAllCards() {
   if (typeFilter) {
     queryParam = `types=${typeFilter}`
     document.querySelector(`[value=${typeFilter}]`).selected = true
-  }
-  if (colorFilter) {
+  } else if (colorFilter) {
     queryParam = `colors=${colorFilter}`
     document.querySelector(`[value=${colorFilter}]`).checked = true
   }
@@ -39,33 +38,20 @@ function displayCards(cards) {
       cardImage.alt = card.name
       cardContainer.appendChild(cardImage)
 
-      const cardName = document.createElement('p')
-      cardName.className = 'card_name'
-      cardName.innerHTML = card.name
-      cardContainer.appendChild(cardName)
-
-       //TODO: reduce card names that are > 15 characters
-      if (card.name.length > 18) {
-        cardName.className = 'card_name_big'
-      } else if (card.name.length > 22) {
-        cardName.className = 'card_name_biggest'
-      }
+      const textDiv = document.createElement('div')
+      textDiv.classname = 'text_div'
+      cardContainer.appendChild(textDiv)
 
       let addFavorite = document.createElement('img')
       addFavorite.className = 'fav_icon'
       addFavorite.src = "CSS/heart.svg"
       addFavorite.alt = "Heart icon"
-      cardName.appendChild(addFavorite)
+      textDiv.appendChild(addFavorite)
 
-      //*! toggle color + add/remove from favorites page
-      addFavorite.addEventListener("click", () => {
-        addFavorite.src = "CSS/heart-black.svg"
-        /* console.log(addFavorite.getAttribute('src'))
-        if (source == "CSS/heart-black.svg") {
-          addFavorite.src = "CSS/heart.svg"
-        } */
-
-      })
+      const cardName = document.createElement('p')
+      cardName.className = 'card_name'
+      cardName.innerHTML = card.name
+      textDiv.appendChild(cardName)
     }
 })
 }
@@ -82,7 +68,7 @@ addEventListener("DOMContentLoaded", () => {
     let queryParams = []
     if (cardTypeFilter) queryParams.push(`type=${cardTypeFilter}`)
     if (cardNameFilter) queryParams.push(`name=${cardNameFilter}`)
-    if (cardColorFilter.length > 0) queryParams.push(`colors=${cardColorFilter}`)
+    if (cardColorFilter) queryParams.push(`colors=${cardColorFilter}`)
 
     const queryString = queryParams.join("&")
 

@@ -167,29 +167,32 @@ button {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+.text_div {
+  justify-content: space-between;
+  max-width: 200px;
+}
+
 .card_name {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5px 15px;
-}
-
-.card_name_big {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5px 15px;
-  font-size: 0.7em;
-}
-
-.card_name_biggest {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5px 15px;
-  font-size: 0.6em;
+  display: inline-block;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-bottom: 3px;
 }
 
 .fav_icon {
   height: 25px;
+  margin: 5px 10px 0 10px;
+}
+
+/*=== FAVORITES PAGE ===*/
+
+#saved_favorites {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 50px;
 }
