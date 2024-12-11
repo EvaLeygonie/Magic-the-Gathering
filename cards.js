@@ -1,5 +1,7 @@
 const cardList = document.querySelector("#card_list")
 const inputForm = document.querySelector("form")
+const favoriteCards = []
+localStorage.setItem("favorites", JSON.stringify(favoriteCards))
 
 addEventListener("load", loadAllCards)
 
@@ -25,7 +27,6 @@ async function loadAllCards() {
 
 function displayCards(cards) {
   cardList.innerHTML = ""
-
   cards.forEach(card => {
     if (card.imageUrl) {
       const cardContainer = document.createElement('div')
@@ -48,13 +49,34 @@ function displayCards(cards) {
       addFavorite.alt = "Heart icon"
       textDiv.appendChild(addFavorite)
 
+      addFavorite.addEventListener("click", () => {
+        if (addFavorite.src = "CSS/heart.svg") {
+          addFavorite.src = "CSS/heart-black.svg"
+          favoriteCards.push(card)
+          localStorage.setItem("favorites", JSON.stringify(favoriteCards))
+        }
+      })
+
       const cardName = document.createElement('p')
       cardName.className = 'card_name'
       cardName.innerHTML = card.name
       textDiv.appendChild(cardName)
     }
+ return favoriteCards
 })
 }
+
+
+
+
+/* function toggleFavorite(card) {
+
+   if (heart.src = "CSS/heart.svg") {
+    heart.src = "CSS/heart-black.svg"
+  } else if (heart.src = "CSS/heart-black.svg") {
+    heart.src = "CSS/heart.svg"
+  }
+} */
 
 addEventListener("DOMContentLoaded", () => {
   inputForm.addEventListener("submit", async (event) => {
