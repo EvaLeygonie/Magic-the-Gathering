@@ -1,8 +1,11 @@
-const chartSection = document.querySelector("#my_chart")
+
 const favoriteList = document.querySelector("#saved_favorites")
 const favoriteCards = JSON.parse(localStorage.getItem("favorites"))
 
-addEventListener("DOMContentLoaded", displayCards(favoriteCards))
+addEventListener("DOMContentLoaded", () => {
+  displayCards(favoriteCards)
+  updateChart(favoriteCards)
+})
 
 function displayCards(cards) {
   favoriteList.innerHTML = ""
@@ -43,7 +46,34 @@ function displayCards(cards) {
 )
 }
 
-let colorData = [55, 49, 44, 24, 15] //TODO: Get right data
+function updateChart(cards) {
+const chartSection = document.querySelector("#my_chart")
+let black = []
+let red = []
+let green = []
+let blue = []
+let white = []
+
+for(let i = 0; i < cards.length; i++){
+  let cardColor = cards[i].colors
+  if (cardColor.includes("B")){
+    black.push(cards[i])
+  }
+  if (cardColor.includes("R")){
+    red.push(cards[i])
+  }
+  if (cardColor.includes("G")){
+    green.push(cards[i])
+  }
+  if (cardColor.includes("U")){
+    blue.push(cards[i])
+  }
+  if (cardColor.includes("W")){
+    white.push(cards[i])
+  }
+}
+
+let colorData = [black.length, red.length, green.length, blue.length, white.length]
 let colorLabels = ["Black", "Red", "Green", "Blue", "White"]
 let barColors = ['#1B1B1B', '#E63946', '#3A9D23', '#0078BF', '#EDE6DB']
 
@@ -60,3 +90,4 @@ new Chart(chartSection, {
     }]
   }
 })
+}
