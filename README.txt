@@ -101,3 +101,11 @@ async function testDisplayCardTypes() {
     }
   })
 }
+
+
+//=== FAVORITES ===//
+Keep the black heart => If() card is in localStorage, show black heart
+Reverse the process to make the heart white + unsave
+Display cards on favorite page
+Save data on colors (types?)
+Make a chart on the side

@@ -1,7 +1,6 @@
 const cardList = document.querySelector("#card_list")
 const inputForm = document.querySelector("form")
-const favoriteCards = []
-localStorage.setItem("favorites", JSON.stringify(favoriteCards))
+const favoriteCards = JSON.parse(localStorage.getItem("favorites"))
 
 addEventListener("load", loadAllCards)
 
