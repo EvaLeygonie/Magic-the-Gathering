@@ -46,7 +46,6 @@ function displayCards(cards) {
       let addFavorite = document.createElement('img')
       addFavorite.className = 'fav_icon'
       addFavorite.alt = "Heart icon"
-      addFavorite.src = "CSS/heart.svg"
       textDiv.appendChild(addFavorite)
 
       let fav = false
@@ -56,13 +55,13 @@ function displayCards(cards) {
       if(fav) addFavorite.src = "CSS/heart-black.svg"
       else addFavorite.src = "CSS/heart.svg"
 
-      addFavorite.addEventListener("click", () => {
-        if (addFavorite.src = "CSS/heart.svg") {
-          addFavorite.src = "CSS/heart-black.svg"
-          favoriteCards.push(card)
-          localStorage.setItem("favorites", JSON.stringify(favoriteCards))
-        }
-      })
+     addFavorite.addEventListener("click", () => {
+      if (addFavorite.src = "CSS/heart.svg") {
+        addFavorite.src = "CSS/heart-black.svg"
+        favoriteCards.push(card)
+        localStorage.setItem("favorites", JSON.stringify(favoriteCards))
+      }
+    })
 
       const cardName = document.createElement('p')
       cardName.className = 'card_name'

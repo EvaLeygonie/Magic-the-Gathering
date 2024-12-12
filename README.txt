@@ -143,14 +143,44 @@ localStorage.setItem("favorites", JSON.stringify(favoriteCards))
   const savedCard = cardString.includes(favString)
   console.log(savedCard)
 
+TEST SWITCH
+
+      let fav = false
+      favoriteCards.map(val =>{
+        if(JSON.stringify( {...val})===JSON.stringify({...card})) fav = true
+      })
+      if(fav) addFavorite.src = "CSS/heart-black.svg"
+      else addFavorite.src = "CSS/heart.svg"
+
+      addFavorite.addEventListener("click", () => {
+        if (addFavorite.src = "CSS/heart.svg") {
+          addFavorite.src = "CSS/heart-black.svg"
+          favoriteCards.push(card)
+          localStorage.setItem("favorites", JSON.stringify(favoriteCards))
+        } else {
+          addFavorite.src = "CSS/heart.svg"
+          favoriteCards.splice(index, 1)
+          localStorage.setItem("favorites", JSON.stringify(favoriteCards))
+        }
+      })
+
+OTHER SOURCE => Index is wrong in card page because its allCards index instead of favoriteCards
+      if (addFavorite.src == "http://127.0.0.1:5500/CSS/heart-black.svg"){
+        addFavorite.src = "CSS/heart.svg"
+        favoriteCards.splice(index, 1)
+        console.log(favoriteCards)
+        localStorage.setItem("favorites", JSON.stringify(favoriteCards))
+        }
+
+//=== RESET FAVORITES ===//
+
+  const favoriteCards = []
+  localStorage.setItem("favorites", JSON.stringify(favoriteCards))
 
 //=== FAVORITES TO DO ===//
 
-Keep the black heart => If() card is in localStorage, show black heart
-Reverse the process to make the heart white + unsave on Card page
-+ save again on favorites pages
-  => Reload page after unsave?
-  => How does it affect chart?
+Make toggle between favorite or not on both pages
+  => Fix if you click on heart twice it saves twice
 
 Save data on colors (types?)
 Make a chart on the side

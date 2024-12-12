@@ -5,7 +5,7 @@ addEventListener("DOMContentLoaded", displayCards(favoriteCards))
 
 function displayCards(cards) {
   favoriteList.innerHTML = ""
-  cards.forEach(card => {
+  cards.forEach(function (card, index) {
     if (card.imageUrl) {
       const cardContainer = document.createElement('div')
       cardContainer.className = 'card_container'
@@ -21,8 +21,6 @@ function displayCards(cards) {
       textDiv.classname = 'text_div'
       cardContainer.appendChild(textDiv)
 
-      //*!If card is in LocalStorage, use oposite code
-
       let addFavorite = document.createElement('img')
       addFavorite.className = 'fav_icon'
       addFavorite.src = "CSS/heart-black.svg"
@@ -32,7 +30,7 @@ function displayCards(cards) {
       addFavorite.addEventListener("click", () => {
         if (addFavorite.src = "CSS/heart-black.svg") {
           addFavorite.src = "CSS/heart.svg"
-          favoriteCards.splice(card, 1)
+          favoriteCards.splice(index, 1)
           localStorage.setItem("favorites", JSON.stringify(favoriteCards))
         }
       })
@@ -44,12 +42,3 @@ function displayCards(cards) {
     }
 })
 }
-
-/* addEventListener("load", loadAllCards)
-
-async function loadAllCards() {
-  const result = (await axios.get('https://api.magicthegathering.io/v1/cards')).data
-
-  const allCards = result.cards
-  displayCards(favoriteCards)
-} */
