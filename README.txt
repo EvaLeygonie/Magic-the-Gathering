@@ -102,10 +102,26 @@ async function testDisplayCardTypes() {
   })
 }
 
+//=== TEST TOGGLE FAVORITES ===//
+/* function toggleFavorite(card) {
 
-//=== FAVORITES ===//
+   if (heart.src = "CSS/heart.svg") {
+    heart.src = "CSS/heart-black.svg"
+  } else if (heart.src = "CSS/heart-black.svg") {
+    heart.src = "CSS/heart.svg"
+  }
+} */
+
+
+//=== FAVORITES TO DO ===//
+
 Keep the black heart => If() card is in localStorage, show black heart
-Reverse the process to make the heart white + unsave
-Display cards on favorite page
+Reverse the process to make the heart white + unsave on Card page
+
 Save data on colors (types?)
 Make a chart on the side
+
+Remove specific card from localStorage:
+
+favoriteCards.splice(3, 1)
+localStorage.setItem("favorites", JSON.stringify(favoriteCards))

@@ -61,21 +61,8 @@ function displayCards(cards) {
       cardName.innerHTML = card.name
       textDiv.appendChild(cardName)
     }
- return favoriteCards
 })
 }
-
-
-
-
-/* function toggleFavorite(card) {
-
-   if (heart.src = "CSS/heart.svg") {
-    heart.src = "CSS/heart-black.svg"
-  } else if (heart.src = "CSS/heart-black.svg") {
-    heart.src = "CSS/heart.svg"
-  }
-} */
 
 addEventListener("DOMContentLoaded", () => {
   inputForm.addEventListener("submit", async (event) => {
