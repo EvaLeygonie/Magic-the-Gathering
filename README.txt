@@ -112,16 +112,45 @@ async function testDisplayCardTypes() {
   }
 } */
 
+//=== TEST BLACK HEART ON SAVED CARDS ===//
+
+  for (i = 0; i < favoriteCards.length; i++){
+    if (favoriteCards[i] === card) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+// Remove specific card from localStorage:
+
+favoriteCards.splice(3, 1)
+localStorage.setItem("favorites", JSON.stringify(favoriteCards))
+
+// Find card array place on favorite page
+
+ console.log(card, favoriteCards.indexOf(card))
+ console.log(card, favoriteCards.includes(card))
+
+ TEST
+ cards.some((card) => Object.entries(card).toString() === Object.entries(favoriteCards).toString())
+
+ TEST STRINGIFY
+  const favString = JSON.stringify(favoriteCards)
+  const cardString = JSON.stringify(cards)
+  console.log(favString)
+  console.log(cardString)
+  const savedCard = cardString.includes(favString)
+  console.log(savedCard)
+
 
 //=== FAVORITES TO DO ===//
 
 Keep the black heart => If() card is in localStorage, show black heart
 Reverse the process to make the heart white + unsave on Card page
++ save again on favorites pages
+  => Reload page after unsave?
+  => How does it affect chart?
 
 Save data on colors (types?)
 Make a chart on the side
-
-Remove specific card from localStorage:
-
-favoriteCards.splice(3, 1)
-localStorage.setItem("favorites", JSON.stringify(favoriteCards))

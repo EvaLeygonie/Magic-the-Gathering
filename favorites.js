@@ -21,6 +21,8 @@ function displayCards(cards) {
       textDiv.classname = 'text_div'
       cardContainer.appendChild(textDiv)
 
+      //*!If card is in LocalStorage, use oposite code
+
       let addFavorite = document.createElement('img')
       addFavorite.className = 'fav_icon'
       addFavorite.src = "CSS/heart-black.svg"

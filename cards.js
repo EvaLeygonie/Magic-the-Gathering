@@ -26,6 +26,7 @@ async function loadAllCards() {
 
 function displayCards(cards) {
   cardList.innerHTML = ""
+
   cards.forEach(card => {
     if (card.imageUrl) {
       const cardContainer = document.createElement('div')
@@ -44,9 +45,16 @@ function displayCards(cards) {
 
       let addFavorite = document.createElement('img')
       addFavorite.className = 'fav_icon'
-      addFavorite.src = "CSS/heart.svg"
       addFavorite.alt = "Heart icon"
+      addFavorite.src = "CSS/heart.svg"
       textDiv.appendChild(addFavorite)
+
+      let fav = false
+      favoriteCards.map(val =>{
+        if(JSON.stringify( {...val})===JSON.stringify({...card})) fav = true
+      })
+      if(fav) addFavorite.src = "CSS/heart-black.svg"
+      else addFavorite.src = "CSS/heart.svg"
 
       addFavorite.addEventListener("click", () => {
         if (addFavorite.src = "CSS/heart.svg") {
