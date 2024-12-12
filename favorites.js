@@ -42,3 +42,27 @@ function displayCards(cards) {
     }
 })
 }
+
+const chartSection = document.querySelector("#my_chart")
+
+let colorLabels = ["Black", "Red", "Green", "Blue", "White"]
+let colorData = [55, 49, 44, 24, 15] //TODO: Get right data
+let barColors = [
+  '#1B1B1B',
+  '#E63946',
+  '#3A9D23',
+  '#0078BF',
+  '#EDE6DB'
+]
+
+//TODO: Remove legend or move it under?
+new Chart(chartSection, {
+  type: "pie",
+  data: {
+    labels: colorLabels,
+    datasets: [{
+      backgroundColor: barColors,
+      data: colorData
+    }]
+  }
+})
