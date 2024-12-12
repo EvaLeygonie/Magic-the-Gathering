@@ -188,11 +188,33 @@ button {
 
 /*=== FAVORITES PAGE ===*/
 
+#favorites_page {
+
+}
+
+#saved_cards {
+  float: left;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#chart_stats {
+  float: right;
+  text-align: center;
+  margin-top: 30px;
+}
+
 #saved_favorites {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 50px;
+  padding: 20px;
+  max-width: 60vw;
+}
+
+#my_chart {
+  padding: 20px;
+  max-width: 40vw;
 }

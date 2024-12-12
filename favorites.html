@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="An introduction to magic the gathering and the different types of cards">
   <title>Magic the Gathering - Introduction</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="CSS/style.css" rel="Stylesheet">
 </head>
 
@@ -27,12 +27,14 @@
   <main>
     <h1>Favorites</h1>
     <div id="favorites_page">
-      <section id="saved_favorites">
-
+      <section id="saved_cards">
+        <h2>Saved Cards</h2>
+        <div id="saved_favorites"></div>
       </section>
 
       <sections id="chart_stats">
-
+        <h2>Color stats</h2>
+        <canvas id="my_chart"></canvas>
       </sections>
     </div>
   </main>
