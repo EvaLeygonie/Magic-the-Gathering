@@ -9,10 +9,23 @@
 </head>
 
 <body>
+  <header>
+    <a href="index.html">
+      <img id="logo_nav" src="CSS/LOGO-MAGIC.png" alt="Magic the Gathering logo">
+    </a>
+    <nav>
+      <a href="cities.html">Cities</a>
+      <a href="index.html">Introduction</a>
+      <a href="cards.html">Cards</a>
+      <a href="favorites.html">
+        <img class="favorites_icon" src="CSS/heart.svg" alt="Heart icon">
+      </a>
+    </nav>
+  </header>
 
   <div id="form_cities">
 
-    <form id="get_city">
+    <form id="search_city">
       <input type="text" id="get_name" placeholder="City name">
       <input type="submit" value="Search specific city">
     </form>
@@ -25,9 +38,7 @@
 
   </div>
 
-  <div id="show_cities">
-
-  </div>
+  <div id="show_cities"></div>
 
   <script src="cities.js"></script>
 </body>

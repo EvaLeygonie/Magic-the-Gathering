@@ -12,15 +12,10 @@ function fetchCities(name) {
   .then(cities => {
     cityDisplay.innerHTML = ""
     cities.forEach(city => {
-      const cityItem = document.createElement("p")
+      const cityItem = document.createElement("div")
       cityItem.className = 'city_list'
-      cityItem.textContent = `${city.name}, Population: ${city.population}`
+      cityItem.innerHTML = `<p>${city.name},  <em>Population:</em> ${city.population}</p>`
       cityDisplay.appendChild(cityItem)
-
-      const cityIdDisplay = document.createElement("p")
-      cityItem.className = 'city_list'
-      cityIdDisplay.textContent = `ID: ${city.id}`
-      cityItem.appendChild(cityIdDisplay)
 
       const cityDiv = document.createElement("div")
       cityDiv.innerHTML = `<button onclick="deleteCity('${city.id}')">Delete city</button><button onclick="editCity('${city.id}')">Edit city</button>`
@@ -37,8 +32,8 @@ function deleteCity (cityId) {
 }
 
 function editCity(cityId) {
-  const putName = prompt("New city name:")
-  const putPop = Number(prompt("New population:"))
+  const putName = prompt("New city name (required):")
+  const putPop = Number(prompt("New population (required):"))
 
   fetch(`https://avancera.app/cities/${cityId}`, {
     body: JSON.stringify({id: cityId, name: putName, population: putPop}),
@@ -50,8 +45,8 @@ function editCity(cityId) {
     .then(() => fetchCities(cityName))
 }
 
-const getCity = document.querySelector("#get_city")
-getCity.addEventListener("submit", (event) => {
+const searchCity = document.querySelector("#search_city")
+searchCity.addEventListener("submit", (event) => {
   event.preventDefault()
   const getName = document.querySelector("#get_name").value
   fetchCities(getName)
