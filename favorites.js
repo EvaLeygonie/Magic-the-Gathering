@@ -22,7 +22,7 @@ function displayCards(cards) {
     cardContainer.appendChild(cardImage)
 
     const textDiv = document.createElement('div')
-    textDiv.classname = 'text_div'
+    textDiv.className = 'text_div'
     cardContainer.appendChild(textDiv)
 
     let addFavorite = document.createElement('img')

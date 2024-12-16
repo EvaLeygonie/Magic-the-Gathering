@@ -24,8 +24,7 @@ ALLT FÖRUTOM FETCH:
 
 /* const postButton = document.querySelector("#post_city")
 const putButton = document.querySelector("#put_city")
-const deleteButton = document.querySelector("#delete_city")
-const cityDisplay = document.querySelector("#show_cities") */
+const deleteButton = document.querySelector("#delete_city") */
 
 COMBINED FORM:
     <form id="get_city">
