@@ -3,13 +3,6 @@ let cityName = ""
 
 addEventListener("load", fetchCities(cityName))
 
-const getCity = document.querySelector("#get_city")
-getCity.addEventListener("submit", (event) => {
-  event.preventDefault()
-  const getName = document.querySelector("#get_name").value
-  fetchCities(getName)
-})
-
 function fetchCities(name) {
   fetch('https://avancera.app/cities/?name=' + name)
   .then(response => {
@@ -34,3 +27,29 @@ function deleteCity (cityId) {
   })
     .then(() => fetchCities(cityName))
 }
+
+const getCity = document.querySelector("#get_city")
+getCity.addEventListener("submit", (event) => {
+  event.preventDefault()
+  const getName = document.querySelector("#get_name").value
+  fetchCities(getName)
+})
+
+const postCity = document.querySelector("#post_city")
+postCity.addEventListener("submit", (event) => {
+  event.preventDefault()
+  const postName = document.querySelector("#post_name").value
+  const postPop = Number(document.querySelector("#post_pop").value)
+
+  fetch('https://avancera.app/cities/', {
+    body: JSON.stringify({name: postName, population: postPop}),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+      method: 'POST'
+    })
+    .then(() => {
+      fetchCities(cityName)
+      event.target.reset()
+    })
+})
