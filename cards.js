@@ -24,13 +24,41 @@ async function loadAllCards() {
   displayCards(allCards)
 }
 
+addEventListener("DOMContentLoaded", () => {
+  inputForm.addEventListener("submit", async (event) => {
+    event.preventDefault()
+
+    const cardTypeFilter = document.querySelector('select[id="card_type_filter"]').value
+    const cardNameFilter = document.querySelector('#search_card').value
+    const checkedColors = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
+    const cardColorFilter = [...checkedColors].map(e => e.value)
+
+    let queryParams = []
+    if (cardTypeFilter) queryParams.push(`type=${cardTypeFilter}`)
+    if (cardNameFilter) queryParams.push(`name=${cardNameFilter}`)
+    if (cardColorFilter) queryParams.push(`colors=${cardColorFilter}`)
+
+    const queryString = queryParams.join("&")
+
+    const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryString}`)).data
+    let filteredCards = result.cards
+
+    if (cardColorFilter.length > 0) {
+      filteredCards = result.cards.filter(card =>
+        JSON.stringify(card.colors.sort()) === JSON.stringify(cardColorFilter.sort())
+      )
+    }
+
+    displayCards(filteredCards)
+  })
+})
+
 function displayCards(cards) {
   cardList.innerHTML = ""
 
   cards.forEach(card => {
     if (card.imageUrl) {
       const cardContainer = document.createElement('div')
-      cardContainer.className = 'card_container'
       cardList.appendChild(cardContainer)
 
       const cardImage = document.createElement('img')
@@ -70,32 +98,3 @@ function displayCards(cards) {
     }
 })
 }
-
-addEventListener("DOMContentLoaded", () => {
-  inputForm.addEventListener("submit", async (event) => {
-    event.preventDefault()
-
-    const cardTypeFilter = document.querySelector('select[id="card_type_filter"]').value
-    const cardNameFilter = document.querySelector('#search_card').value
-    const checkedColors = document.querySelectorAll("#card_colors_filter input[type='checkbox']:checked")
-    const cardColorFilter = [...checkedColors].map(e => e.value)
-
-    let queryParams = []
-    if (cardTypeFilter) queryParams.push(`type=${cardTypeFilter}`)
-    if (cardNameFilter) queryParams.push(`name=${cardNameFilter}`)
-    if (cardColorFilter) queryParams.push(`colors=${cardColorFilter}`)
-
-    const queryString = queryParams.join("&")
-
-    const result = (await axios.get(`https://api.magicthegathering.io/v1/cards?${queryString}`)).data
-    let filteredCards = result.cards
-
-    if (cardColorFilter.length > 0) {
-      filteredCards = result.cards.filter(card =>
-        JSON.stringify(card.colors.sort()) === JSON.stringify(cardColorFilter.sort())
-      )
-    }
-
-    displayCards(filteredCards)
-  })
-})

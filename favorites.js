@@ -8,10 +8,11 @@ addEventListener("DOMContentLoaded", () => {
 })
 
 function displayCards(cards) {
+
   favoriteList.innerHTML = ""
+
   cards.forEach(function (card, index) {
     const cardContainer = document.createElement('div')
-    cardContainer.className = 'card_container'
     favoriteList.appendChild(cardContainer)
 
     const cardImage = document.createElement('img')
@@ -48,6 +49,7 @@ function displayCards(cards) {
 
 function updateChart(cards) {
 const chartSection = document.querySelector("#my_chart")
+
 let black = []
 let red = []
 let green = []
