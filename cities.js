@@ -23,7 +23,7 @@ function fetchCities(name) {
       cityItem.appendChild(cityIdDisplay)
 
       const cityDiv = document.createElement("div")
-      cityDiv.innerHTML = `<button onclick="deleteCity('${city.id}')">Delete city</button>`
+      cityDiv.innerHTML = `<button onclick="deleteCity('${city.id}')">Delete city</button><button onclick="editCity('${city.id}')">Edit city</button>`
       cityItem.appendChild(cityDiv)
     })
   })
@@ -36,6 +36,20 @@ function deleteCity (cityId) {
     .then(() => fetchCities(cityName))
 }
 
+function editCity(cityId) {
+  const putName = prompt("New city name:")
+  const putPop = Number(prompt("New population:"))
+
+  fetch(`https://avancera.app/cities/${cityId}`, {
+    body: JSON.stringify({id: cityId, name: putName, population: putPop}),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+      method: 'PUT'
+    })
+    .then(() => fetchCities(cityName))
+}
+
 const getCity = document.querySelector("#get_city")
 getCity.addEventListener("submit", (event) => {
   event.preventDefault()
@@ -43,7 +57,7 @@ getCity.addEventListener("submit", (event) => {
   fetchCities(getName)
 })
 
-/* const postCity = document.querySelector("#post_city")
+const postCity = document.querySelector("#post_city")
 postCity.addEventListener("submit", (event) => {
   event.preventDefault()
   const postName = document.querySelector("#post_name").value
@@ -61,24 +75,3 @@ postCity.addEventListener("submit", (event) => {
       event.target.reset()
     })
 })
-
-const putCity = document.querySelector("#put_city")
-putCity.addEventListener("submit", (event) => {
-  event.preventDefault()
-
-  const cityId =  document.querySelector("#city_id").value
-  const putName = document.querySelector("#put_name").value
-  const putPop = Number(document.querySelector("#put_pop").value)
-
-  fetch('https://avancera.app/cities/', {
-    body: JSON.stringify({id: cityId, name: putName, population: putPop}),
-    headers: {
-      'Content-Type': 'application/json'
-    },
-      method: 'PUT'
-    })
-    .then(() => {
-      fetchCities(cityName)
-      event.target.reset()
-    })
-}) */
