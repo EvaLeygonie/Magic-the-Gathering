@@ -1,8 +1,6 @@
 //=== TODO ===//
 
 - addEventListener for each button to each function => displayCities + a text saying what you did
-- ForEach city, display function + CSS
-- toLowerCase etc?
 
 //=== Extra queries/variables ===//
 
@@ -38,3 +36,24 @@ COMBINED FORM:
       <input type="submit" id="delete_city" value="Delete City">
 
     </form>
+
+OLD ForEach:
+   const cityDiv = document.createElement('div')
+    cityDiv.className = 'city_div'
+    cityDisplay.appendChild(cityDiv)
+
+    const cityDisplayName = document.createElement('p')
+    cityDisplayName.className = 'city_display_name'
+    cityDisplayName.innerHTML = 'City: ' +  city.name
+    cityDiv.appendChild(cityDisplayName)
+
+    const cityDisplayPop = document.createElement('p')
+    cityDisplayPop.className = 'city_display_pop'
+    cityDisplayPop.innerHTML = 'Population: ' + city.population
+    cityDiv.appendChild(cityDisplayPop)
+
+    const deleteButton = document.createElement('button')
+    deleteButton.className = 'delete_button'
+    deleteButton.innerHTML = 'Delete city'
+    deleteButton.onclick = deleteCity(city.id)
+    cityDiv.appendChild(deleteButton)

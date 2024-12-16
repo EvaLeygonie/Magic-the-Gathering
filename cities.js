@@ -1,5 +1,6 @@
-const getCity = document.querySelector("#get_city")
+const cityDisplay = document.querySelector("#show_cities")
 
+/* const getCity = document.querySelector("#get_city")
 getCity.addEventListener("submit", (event) => {
   event.preventDefault()
 
@@ -14,26 +15,34 @@ getCity.addEventListener("submit", (event) => {
   .then(cities => {
     displayCity(cities)
   })
-})
+}) */
 
-const cityDisplay = document.querySelector("#show_cities")
+addEventListener("load", fetchCities)
 
-function displayCity (cities) {
-  cityDisplay.innerHTML = ""
+function fetchCities() {
+  const getName = document.querySelector("#get_name").value
+  const getPop = Number(document.querySelector("#get_pop").value)
 
-  cities.forEach(city => {
-    const cityDiv = document.createElement('div')
-    cityDiv.className = 'city_div'
-    cityDisplay.appendChild(cityDiv)
-
-    const cityDisplayName = document.createElement('p')
-    cityDisplayName.className = 'city_display_name'
-    cityDisplayName.innerHTML = city.name
-    cityDiv.appendChild(cityDisplayName)
-
-    const cityDisplayPop = document.createElement('p')
-    cityDisplayPop.className = 'city_display_pop'
-    cityDisplayPop.innerHTML = 'Population: ' + city.population
-    cityDiv.appendChild(cityDisplayPop)
+  fetch('https://avancera.app/cities/?name=' + getName + '&minPopulation=' + getPop)
+  .then(response => {
+    let cities = response.json()
+    return cities
   })
+  .then(cities => {
+    cityDisplay.innerHTML = ""
+    cities.forEach(city => {
+      const cityItem = document.createElement("li")
+      cityItem.className = 'city_list'
+      cityItem.textContent = `${city.name} (${city.population})`
+      cityItem.innerHTML += `<button onclick="deleteCity('${city.id}')">Delete city</button>`
+      cityDisplay.appendChild(cityItem)
+    })
+  })
+}
+
+function deleteCity (cityId) {
+  fetch('https://avancera.app/cities/' + cityId, {
+    method: 'DELETE'
+  })
+    .then(() => fetchCities())
 }
