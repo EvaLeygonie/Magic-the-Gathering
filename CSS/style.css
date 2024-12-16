@@ -208,3 +208,13 @@ input {
   max-height: 40vw;
   padding: 20px 20px 20px 20px;
 }
+
+/*=== CITIES ===*/
+
+#form_cities {
+  margin: 20px;
+
+  form {
+    margin-bottom: 10px;
+  }
+}

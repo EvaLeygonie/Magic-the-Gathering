@@ -4,15 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="An introduction to magic the gathering and the different types of cards">
-  <title>Magic the Gathering - Introduction</title>
+  <title>cities</title>
   <link href="CSS/style.css" rel="Stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-  <div>
-    <canvas id="myChart"></canvas>
+
+  <div id="form_cities">
+    <form id="get_city">
+      <input type="text" id="get_name" placeholder="City name">
+      <input type="text" id="get_pop" placeholder="Population">
+      <input type="submit" value="See City">
+    </form>
+
+    <form id="post_city">
+      <input type="text" id="post_name" placeholder="City name">
+      <input type="text" id="post_pop" placeholder="Population">
+      <input type="submit" value="Add City">
+    </form>
+
+    <form id="put_city">
+      <input type="text" id="put_name" placeholder="City name">
+      <input type="text" id="put_pop" placeholder="Population">
+      <input type="submit" value="Update City">
+    </form>
+
+    <form id="delete_city">
+      <input type="text" id="delete_name" placeholder="City name">
+      <input type="text" id="delete_pop" placeholder="Population">
+      <input type="submit" value="Delete City">
+    </form>
+  </div>
+
+  <div id="show_cities">
+
   </div>
 
   <script src="cities.js"></script>
