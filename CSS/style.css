@@ -214,7 +214,7 @@ input {
 #form_cities {
   margin: 20px;
 
-  form {
+  input {
     margin-bottom: 10px;
   }
 }
