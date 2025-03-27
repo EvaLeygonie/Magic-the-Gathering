@@ -17,9 +17,14 @@ function fetchCities(name) {
       cityItem.innerHTML = `<p>${city.name},  <em>Population:</em> ${city.population}</p>`
       cityDisplay.appendChild(cityItem)
 
-      const cityDiv = document.createElement("div")
-      cityDiv.innerHTML = `<button onclick="deleteCity('${city.id}')">Delete city</button><button onclick="editCity('${city.id}')">Edit city</button>`
-      cityItem.appendChild(cityDiv)
+      const cityEdit = document.createElement("div")
+      cityEdit.innerHTML = `<input type="text" id="edit_name" placeholder="City name" required>
+      <input type="text" id="edit_pop" placeholder="Population" required><button onclick="editCity('${city.id}')">Edit city</button>`
+      cityItem.appendChild(cityEdit)
+
+      const cityDelete = document.createElement("div")
+      cityDelete.innerHTML = `<button onclick="deleteCity('${city.id}')">Delete city</button>`
+      cityItem.appendChild(cityDelete)
     })
   })
 }
@@ -32,8 +37,8 @@ function deleteCity (cityId) {
 }
 
 function editCity(cityId) {
-  const putName = prompt("New city name (required):")
-  const putPop = Number(prompt("New population (required):"))
+  const putName = document.querySelector("#edit_name").value
+  const putPop = Number(document.querySelector("#edit_pop").value)
 
   fetch(`https://avancera.app/cities/${cityId}`, {
     body: JSON.stringify({id: cityId, name: putName, population: putPop}),

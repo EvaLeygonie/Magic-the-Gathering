@@ -80,12 +80,12 @@ function displayCards(cards) {
       favoriteCards.map(val =>{
         if(JSON.stringify( {...val})===JSON.stringify({...card})) fav = true
       })
-      if(fav) addFavorite.src = "CSS/heart-black.svg"
-      else addFavorite.src = "CSS/heart.svg"
+      if(fav) addFavorite.src = "../CSS/heart-black.svg"
+      else addFavorite.src = "../CSS/heart.svg"
 
      addFavorite.addEventListener("click", () => {
-      if (addFavorite.src = "CSS/heart.svg") {
-        addFavorite.src = "CSS/heart-black.svg"
+      if (addFavorite.src = "../CSS/heart.svg") {
+        addFavorite.src = "../CSS/heart-black.svg"
         favoriteCards.push(card)
         localStorage.setItem("favorites", JSON.stringify(favoriteCards))
       }
